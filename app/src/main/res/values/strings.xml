@@ -4,4 +4,11 @@
     <string name="tu_bedzie_cu">Tu bedzie cuś</string>
     <string name="todo">TODO</string>
     <string name="Wwelcome_logo">welcome_logo</string>
+    <string name="facebook_login">FaceBook Login</string>
+    <string name="google_login">Google Login</string>
+    <string name="Project">Project</string>
+    <string name="facebook_app_id">297800690726297</string>
+    <string name="fb_login_protocol_scheme">fb297800690726297</string>
+    <string name="login">login</string>
+    <string name="haslo">haslo</string>
 </resources>
