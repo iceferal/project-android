@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tu_bedzie_cu"
-        android:textSize="40sp"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="279dp"
+        android:layout_height="219dp"
+        app:srcCompat="@drawable/moto"
+        android:layout_marginBottom="30dp"
+        android:contentDescription="@string/Wwelcome_logo" />
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/tu_bedzie_cu"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="40sp" />-->
 
     <ProgressBar
-        android:id="@+id/indeterminateBar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50sp"
-        android:layout_marginRight="50sp"
-        android:layout_marginTop="450sp"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:indeterminate="true"
+        android:indeterminateDuration="3000"
+        android:paddingTop="20dp"
+        android:indeterminateDrawable="@drawable/pb_drawable_1"
+        android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
