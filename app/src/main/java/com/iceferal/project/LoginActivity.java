@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
         login = findViewById(R.id.login_text);
         password = findViewById(R.id.pass_text);
+//        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
 
     }
 // logowanie
@@ -44,9 +47,13 @@ public class LoginActivity extends AppCompatActivity {
 
 //    logowanie fb
     public void fbClick(View view) {
+        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
+        view.startAnimation(animAlpha);
     }
 
 //    logowanie google
     public void googleClick(View view) {
+        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
+        view.startAnimation(animAlpha);
     }
 }
