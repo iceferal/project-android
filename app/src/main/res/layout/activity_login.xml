@@ -51,6 +51,17 @@
         android:onClick="loginClick"/>
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:textStyle="bold"
+        android:text="@string/je_li_jeszcze_nie_masz_konta_zarejestruj_sie" />
+
     <FrameLayout
         android:id="@+id/FrameLayout1"
         android:layout_width="match_parent"

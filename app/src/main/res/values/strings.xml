@@ -11,4 +11,5 @@
     <string name="fb_login_protocol_scheme">fb297800690726297</string>
     <string name="login">login</string>
     <string name="haslo">haslo</string>
+    <string name="je_li_jeszcze_nie_masz_konta_zarejestruj_sie">Jeśli jeszcze nie masz konta: zarejestruj sie</string>
 </resources>

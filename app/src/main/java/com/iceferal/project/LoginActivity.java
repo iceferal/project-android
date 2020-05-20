@@ -1,13 +1,22 @@
 package com.iceferal.project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
@@ -23,6 +32,29 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.pass_text);
 //        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
 
+        TextView textView = findViewById(R.id.textView);
+        String text = "Jeśli jeszcze nie masz konta: zarejestruj sie";
+
+        SpannableString span = new SpannableString(text);
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View Widget) {
+//                Toast.makeText(LoginActivity.this, "lol", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+            @Override
+            public void updateDrawState(TextPaint kolor) {
+                super.updateDrawState(kolor);
+                kolor.setColor(Color.BLUE);
+                kolor.setUnderlineText(false);
+            }
+        };
+
+        span.setSpan(clickableSpan, 30, 45, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(span);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 // logowanie
     public void loginClick(View view) {
