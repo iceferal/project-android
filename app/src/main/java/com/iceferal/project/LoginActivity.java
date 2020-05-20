@@ -39,8 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View Widget) {
-//                Toast.makeText(LoginActivity.this, "lol", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 // logowanie
     public void loginClick(View view) {
-        boolean status = false;
+        boolean status = true;
         String log = login.getText().toString();
         String pass = password.getText().toString();
 
@@ -70,8 +69,8 @@ public class LoginActivity extends AppCompatActivity {
             status = false;        }
 
         if (status) {
-
-            Toast.makeText(getApplicationContext(), "haslo zostalo zmienione", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
             finish();
         }
 
