@@ -12,4 +12,8 @@
     <string name="login">login</string>
     <string name="haslo">haslo</string>
     <string name="je_li_jeszcze_nie_masz_konta_zarejestruj_sie">Jeśli jeszcze nie masz konta: zarejestruj sie</string>
+    <string name="e_mail">e-mail</string>
+    <string name="powtorz_haslo">powtorz haslo</string>
+    <string name="zarejestruj">zarejestruj</string>
+    <string name="ponownie_has_o">ponownie hasło</string>
 </resources>
