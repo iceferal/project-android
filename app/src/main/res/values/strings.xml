@@ -16,4 +16,7 @@
     <string name="powtorz_haslo">powtorz haslo</string>
     <string name="zarejestruj">zarejestruj</string>
     <string name="ponownie_has_o">ponownie hasło</string>
+    <string name="a_taki_chuj">a taki chuj</string>
+    <string name="button">Button</string>
+    <string name="textview">TextView</string>
 </resources>

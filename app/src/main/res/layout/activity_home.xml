@@ -8,16 +8,23 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".StartActivity">
+    tools:context=".HomeActivity">
 
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/text_view_result"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:text="a taki chuj"
-        android:autofillHints="" />
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <Button
+        android:id="@+id/button_parse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp"
+        android:text="parse" />
+
+
 </LinearLayout>
