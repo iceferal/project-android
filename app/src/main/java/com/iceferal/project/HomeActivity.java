@@ -3,62 +3,53 @@ package com.iceferal.project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
+import com.iceferal.project.POJO.UserService;
+import com.iceferal.project.models.Users;
+
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
-    private TextView mTextViewResult;
-    private RequestQueue mQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        mTextViewResult = findViewById(R.id.text_view_result);
-        Button buttonParse = findViewById(R.id.button_parse);
-        mQueue = Volley.newRequestQueue(this);
-        buttonParse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jsonParse();
-            }
-        });
+
+        initViews();
     }
-    private void jsonParse() {
-        String url = "http://localhost:8080/project/users";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonArray = response.getJSONArray("employees");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject employee = jsonArray.getJSONObject(i);
-                                String name = employee.getString("name");
-                                int login = employee.getInt("login");
-                                String mail = employee.getString("mail");
-                                mTextViewResult.append(name + ", " + String.valueOf(login) + ", " + mail + "\n\n");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+
+    public void runCode(View view){
+
+        UserService userService = UserService.retrofit.create(UserService.class);
+        Call <List<Users>> call = userService.getUsers();
+
+        call.enqueue(new Callback<List<Users>>() {
+            @Override
+            public void onResponse(Call<List<Users>> call, Response<List<Users>> response) {
+                if(response.isSuccessful()) {
+                    for (Users user:response.body() ) {
+                        showPost(user);
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
+                }
             }
+
+            @Override
+            public void onFailure(Call<List<Users>> call, Throwable t) { }
         });
-        mQueue.add(request);
     }
+
+    private void showPost(Users user ) {
+        Log.i("userId: ", user.getId() +"\n");
+        Log.i("id: " ,user.getLogin()+"\n");
+    }
+
+
+    private void initViews() { }
+
 }
