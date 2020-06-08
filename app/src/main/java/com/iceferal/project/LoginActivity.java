@@ -19,9 +19,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iceferal.project.POJO.UserService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText login, password;
+    UserService userService = UserService.retrofit.create(UserService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,18 +69,44 @@ public class LoginActivity extends AppCompatActivity {
         String pass = password.getText().toString();
 
         if (TextUtils.isEmpty(log)) {
-            login.setError("Pole haslo nie moze byc puste");
+            login.setError("Pole login nie moze byc puste");
             status = false;        }
         if (TextUtils.isEmpty(pass)) {
             password.setError("Pole haslo nie moze byc puste");
             status = false;        }
 
-        if (status) {
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        Call<String> loginCheck = userService.checkLogin(log);
+        loginCheck.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                String loginCheck = response.body();
+                if(loginCheck == "false") {
+                    login.setError("podany login nie istnieje");                }
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_LONG).show();            }
+        });
 
+        if (status) {
+            String check = log + "_" + pass;
+            Call<String> checkIt = userService.checkit(check);
+            checkIt.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                String checkIt = response.body();
+                if(checkIt == "false") {
+//                    login.setError("login lub hasło są niewłaściwe");
+                    Toast.makeText(LoginActivity.this, "login lub hasło są niewłaściwe.", Toast.LENGTH_LONG).show();                }
+                if(checkIt == "true") {
+                   Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();               }
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_LONG).show();            }
+        }); }
     }
 
 //    logowanie fb

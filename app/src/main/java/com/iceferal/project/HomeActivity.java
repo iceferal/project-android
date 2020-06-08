@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.iceferal.project.POJO.UserService;
-import com.iceferal.project.models.Users;
+import com.iceferal.project.models.User;
 
 import java.util.List;
 import retrofit2.Call;
@@ -21,35 +21,31 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        initViews();
     }
 
     public void runCode(View view){
 
         UserService userService = UserService.retrofit.create(UserService.class);
-        Call <List<Users>> call = userService.getUsers();
+        Call <List<User>> call = userService.getUsers();
 
-        call.enqueue(new Callback<List<Users>>() {
+        call.enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<List<Users>> call, Response<List<Users>> response) {
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if(response.isSuccessful()) {
-                    for (Users user:response.body() ) {
+                    for (User user:response.body() ) {
                         showPost(user);
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Users>> call, Throwable t) { }
+            public void onFailure(Call<List<User>> call, Throwable t) { }
         });
     }
 
-    private void showPost(Users user ) {
+    private void showPost(User user ) {
         Log.i("userId: ", user.getId() +"\n");
         Log.i("id: " ,user.getLogin()+"\n");
     }
-
-
-    private void initViews() { }
 
 }
