@@ -33,4 +33,6 @@
     <string name="home">Home</string>
     <string name="menu_opener">menu opener</string>
     <string name="menu_closer">menu closer</string>
+    <string name="search_for_ride">Search for ride</string>
+    <string name="report_ride">Report ride</string>
 </resources>
