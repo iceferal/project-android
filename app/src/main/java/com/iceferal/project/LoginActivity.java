@@ -37,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
         login = findViewById(R.id.login_text);
         password = findViewById(R.id.pass_text);
-//        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
 
         TextView textView = findViewById(R.id.textView);
         String text = "Jeśli jeszcze nie masz konta: zarejestruj sie";
@@ -85,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_LONG).show();            }
+                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();            }
         });
 
         if (status) {
@@ -97,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 String checkIt = response.body();
                 if(checkIt == "false") {
 //                    login.setError("login lub hasło są niewłaściwe");
-                    Toast.makeText(LoginActivity.this, "login lub hasło są niewłaściwe.", Toast.LENGTH_LONG).show();                }
+                    Toast.makeText(LoginActivity.this, "login lub hasło są niewłaściwe.", Toast.LENGTH_SHORT).show();                }
                 if(checkIt == "true") {
                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
@@ -105,7 +104,10 @@ public class LoginActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_LONG).show();            }
+                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();}
         }); }
     }
 

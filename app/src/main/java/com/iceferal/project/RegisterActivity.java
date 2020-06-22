@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_LONG).show();            }
+                Toast.makeText(RegisterActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();            }
         });
 
 
@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_LONG).show();              }
+                Toast.makeText(RegisterActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();              }
         });
 
         if(status) {
@@ -97,13 +97,13 @@ public class RegisterActivity extends AppCompatActivity {
                         finish();
                     }
                     if(resCode.equals("500")) {
-                        Toast.makeText(RegisterActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
-                    Toast.makeText(RegisterActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
