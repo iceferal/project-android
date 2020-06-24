@@ -3,19 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <group
+        android:id="@+id/gp_one"
+        android:checkableBehavior="single">
         <item
+            android:id="@+id/drive"
+            android:icon="@drawable/ic_baseline_motorcycle_24"
+            android:title="@string/drive" />
+    </group>
+
+     <group
+         android:id="@+id/gp_two"
+         android:checkableBehavior="single">
+            <item
             android:id="@+id/home"
             android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/home" />
 
-        <item
+            <item
             android:id="@+id/friends"
             android:icon="@drawable/ic_baseline_people_24"
-            android:title="Friends" />
+            android:title="@string/friends" />
 
-        <item
-            android:id="@+id/pomocy"
+            <item
+            android:id="@+id/chat"
+            android:icon="@drawable/ic_baseline_chat_24"
+            android:title="@string/chat" />
+
+            <item
+            android:id="@+id/faq"
+            android:icon="@drawable/ic_baseline_swap_horizontal_circle_24"
+            android:title="@string/faq" />
+
+            <item
+            android:id="@+id/help"
             android:icon="@drawable/ic_baseline_build_24"
-            android:title="Pomocy" />
+            android:title="@string/help" />
+     </group>
 
+
+
+    <group
+        android:id="@+id/gp_three"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_baseline_remove_circle_outline_24"
+            android:title="@string/logout" />
+    </group>
 </menu>

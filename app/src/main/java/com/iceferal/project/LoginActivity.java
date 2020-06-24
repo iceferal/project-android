@@ -95,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
                 String checkIt = response.body();
                 if(checkIt == "false") {
-//                    login.setError("login lub hasło są niewłaściwe");
                     Toast.makeText(LoginActivity.this, "login lub hasło są niewłaściwe.", Toast.LENGTH_SHORT).show();                }
                 if(checkIt == "true") {
                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);

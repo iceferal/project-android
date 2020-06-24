@@ -24,7 +24,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:indeterminate="true"
-        android:indeterminateDuration="1000"
+        android:indeterminateDuration="1200"
         android:paddingTop="20dp"
         android:indeterminateDrawable="@drawable/pb_drawable_1"
         android:layout_height="wrap_content" />

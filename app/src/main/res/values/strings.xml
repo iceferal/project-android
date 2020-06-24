@@ -35,4 +35,10 @@
     <string name="menu_closer">menu closer</string>
     <string name="search_for_ride">Search for ride</string>
     <string name="report_ride">Report ride</string>
+    <string name="drive">Drive</string>
+    <string name="faq">FAQ</string>
+    <string name="logout">Logout</string>
+    <string name="help">Help</string>
+    <string name="chat">Chat</string>
+    <string name="friends">Friends</string>
 </resources>
