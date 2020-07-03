@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.iceferal.project.POJO.UserService;
 import com.iceferal.project.models.User;
 
@@ -34,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void klik(View view) {
         boolean status = true;
+        int id = 0;
         String log = login.getText().toString();
         String password = pass.getText().toString();
         String repassword = repass.getText().toString();
@@ -83,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         if(status) {
-            User user = new User("null", "null", log, mail, password);
+            User user = new User(id,"null", "null", log, mail, password);
             Call<User> userCall = userService.postUser(user);
             userCall.enqueue(new Callback<User>() {
                 @Override

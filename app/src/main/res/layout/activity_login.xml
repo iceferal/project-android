@@ -65,23 +65,29 @@
     <FrameLayout
         android:id="@+id/FrameLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="70dp"
+        android:layout_marginTop="2dp">
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button_facebook"-->
+        <!--            style="@style/FacebookLoginButton"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="45dp"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:text="Continue With Facebook"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            android:textColor="@android:color/white" />-->
 
         <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <Button
             android:id="@+id/fb"
+            style="@style/FacebookLoginButton"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
             android:background="#416BC1"
             android:onClick="fbClick"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
-            android:text="@string/facebook_login"
             android:padding="5dp"
             android:textColor="#ffffff"
             android:textStyle="bold" />

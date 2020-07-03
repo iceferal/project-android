@@ -17,8 +17,8 @@ public class User {
     @SerializedName("password")
     private String password;
 
-    public User(String name, String surname, String login, String email, String password) {
-        this.id = id;
+    public User(int id, String name, String surname, String login, String email, String password) {
+        this.id = this.id;
         this.name = name;
         this.surname  = surname;
         this.login = login;

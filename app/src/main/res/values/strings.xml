@@ -3,11 +3,12 @@
     <string name="Siema">siema</string>
     <string name="tu_bedzie_cu">Tu bedzie cuś</string>
     <string name="Welcome_logo">welcome_logo</string>
+    <string name="maps_api_key">AIzaSyBk1hmMcRrgsmj1nUkOXrJsjWVIKaFm4hU</string>
     <string name="facebook_login">FaceBook Login</string>
     <string name="google_login">Google Login</string>
     <string name="Project">Project</string>
-    <string name="facebook_app_id">297800690726297</string>
-    <string name="fb_login_protocol_scheme">fb297800690726297</string>
+    <string name="facebook_app_id">293125095141415</string>
+    <string name="fb_login_protocol_scheme">fb293125095141415</string>
     <string name="login">login</string>
     <string name="haslo">haslo</string>
     <string name="je_li_jeszcze_nie_masz_konta_zarejestruj_sie">Jeśli jeszcze nie masz konta: zarejestruj sie</string>

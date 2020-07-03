@@ -24,43 +24,23 @@
             android:theme="?attr/actionBarTheme"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4dp"/>
+        
+
 
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <LinearLayout
+
+            <fragment
+                android:id="@+id/mapView"
+                android:layout_margin="15dp"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:background="@drawable/shadow"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="25dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/search_ride"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/search_gradient"
-                    android:layout_weight="0.5"
-                    android:text="@string/search_for_ride"
-                    android:onClick="searchRide"
-                    android:layout_height="1dp" />
-
-                <Button
-                    android:id="@+id/report_ride"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/report_gradient"
-                    android:layout_weight="0.5"
-                    android:layout_marginTop="25dp"
-                    android:onClick="reportRide"
-                    android:text="@string/report_ride"
-                    android:layout_height="1dp" />
-
-            </LinearLayout>
-
+                android:layout_height="match_parent"  />
         </FrameLayout>
-
-
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -71,7 +51,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/header"
         app:menu="@menu/homemenu" >
-
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

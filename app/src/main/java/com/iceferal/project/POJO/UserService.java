@@ -18,15 +18,15 @@ import retrofit2.http.Path;
 
 public interface UserService {
 
-    String BASE_URL="http://10.0.2.2:8080/";
-    String FEED="users";
+//    String BASE_URL="http://10.0.2.2:8080/";
+    String BASE_URL="https://project-pri.herokuapp.com";
 
     Retrofit retrofit=new Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    @GET("/users/")
+    @GET("/users")
     Call<List<User>> getUsers();
 
     @GET("/users/{id}")
@@ -38,7 +38,7 @@ public interface UserService {
     @GET("users/login/{login}")
     Call<String> checkLogin(@Path("login") String login);
 
-    @POST("/users/create/")
+    @POST("/users/create")
     Call<User> postUser(@Body User user);
 
     @GET("/users/checkit/{checkit}")
