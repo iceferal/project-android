@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -38,6 +39,15 @@ import com.facebook.HttpMethod;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.Task;
 import com.iceferal.project.POJO.UserService;
 
 import org.json.JSONException;
@@ -52,19 +62,27 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private LoginButton fbButton;
     private EditText login, password;
-    private String email = "email";
     private CallbackManager callbackManager;
     private LoginManager loginManager;
+    private SignInButton googleSignInButton;
+    private GoogleSignInClient googleSignInClient;
+    private static final int RC_SIGN_IN = 0;
     UserService userService = UserService.retrofit.create(UserService.class);
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);     }
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }}
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,71 +122,25 @@ public class LoginActivity extends AppCompatActivity {
 
         fbButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 loginManager.logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile", "user_birthday"));
             }
         });
 
+//        google login
+
+        googleSignInButton = findViewById(R.id.google);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+        googleSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
 }
 
-    public void facebookLogin() {
 
-        loginManager = LoginManager.getInstance();
-        callbackManager = CallbackManager.Factory.create();
-        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-
-        @Override
-        public void onSuccess(LoginResult loginResult) {
-        GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-
-            @Override
-            public void onCompleted(JSONObject object, GraphResponse response) {
-                if (object != null) {
-                try {
-                    String name = object.getString("name");
-                    String email = object.getString("email");
-                    String fbUserID = object.getString("id");
-                    disconnectFromFacebook();
-                    Log.d("kurwa", name);
-                    Log.d("kurwa", fbUserID);
-              // do action after Facebook login success
-              // or call your API
-                    }
-                catch (JSONException | NullPointerException e) {
-                    e.printStackTrace(); }
-              }
-         }
-         });
-
-        Bundle parameters = new Bundle();
-        parameters.putString("fields","id, name, email, gender, birthday");
-        request.setParameters(parameters);
-        request.executeAsync();
-    }
-
-            @Override
-            public void onCancel() {
-                Log.v("LoginScreen", "---onCancel"); }
-
-            @Override
-            public void onError(FacebookException error) {
-                // here write code when get error
-                Log.v("LoginScreen", "----onError: " + error.getMessage()); }
-    });
-    }
-
-    public void disconnectFromFacebook() {
-        if (AccessToken.getCurrentAccessToken() == null) {
-            return;
-            }
-
-        new GraphRequest(
-                AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
-                    @Override
-                    public void onCompleted(GraphResponse graphResponse) {
-                        LoginManager.getInstance().logOut();  }
-        }).executeAsync();
-    }
 
 
 //    public void printHashKey() {
@@ -241,12 +213,72 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 //    logowanie fb
-//    android:onClick="fbClick"
     public void fbClick(View view) {
         Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
         view.startAnimation(animAlpha);
+    }
 
+    public void facebookLogin() {
 
+        loginManager = LoginManager.getInstance();
+        callbackManager = CallbackManager.Factory.create();
+        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        if (object != null) {
+                            try {
+                                String name = object.getString("name");
+                                String email = object.getString("email");
+                                String fbUserID = object.getString("id");
+                                String imageUrl = "https://graph.facebook.com/" + fbUserID + "/picture?type=normal";
+                                disconnectFromFacebook();
+                                Log.d("kurwa", name);
+                                Log.d("kurwa", imageUrl);
+
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                                finish();
+                                // do action after Facebook login success
+                                // or call your API
+                            }
+                            catch (JSONException | NullPointerException e) {
+                                e.printStackTrace(); }
+                        }
+                    }
+                });
+
+                Bundle parameters = new Bundle();
+                parameters.putString("fields","id, name, email, gender, birthday");
+                request.setParameters(parameters);
+                request.executeAsync();
+            }
+            @Override
+            public void onCancel() {
+                Log.v("LoginScreen", "---onCancel"); }
+
+            @Override
+            public void onError(FacebookException error) {
+                // here write code when get error
+                Log.v("LoginScreen", "----onError: " + error.getMessage()); }
+        });
+    }
+
+    public void disconnectFromFacebook() {
+        if (AccessToken.getCurrentAccessToken() == null) {
+            return;
+        }
+
+        new GraphRequest(
+                AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
+            @Override
+            public void onCompleted(GraphResponse graphResponse) {
+                LoginManager.getInstance().logOut();  }
+        }).executeAsync();
     }
 
 //    logowanie google
@@ -254,4 +286,38 @@ public class LoginActivity extends AppCompatActivity {
         Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
         view.startAnimation(animAlpha);
     }
+
+    private void signIn() {
+        Intent signInIntent = googleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(LoginActivity.this);
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+            String personGivenName = acct.getGivenName();
+            String personFamilyName = acct.getFamilyName();
+            String personEmail = acct.getEmail();
+            String personId = acct.getId();
+
+            Log.d("kurwa google", personEmail);
+            Log.d("kurwa google", personName);
+            Log.d("kurwa google", personId);
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        } catch (ApiException e) {
+            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
+            Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_LONG).show();
+        }
+    }
 }
+
+

@@ -28,18 +28,16 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="podpis">podpis</string>
     <string name="HeyRoad">Hey!Road</string>
     <string name="todo">TODO</string>
     <string name="home">Home</string>
     <string name="menu_opener">menu opener</string>
     <string name="menu_closer">menu closer</string>
-    <string name="search_for_ride">Search for ride</string>
-    <string name="report_ride">Report ride</string>
     <string name="drive">Drive</string>
     <string name="faq">FAQ</string>
     <string name="logout">Logout</string>
     <string name="help">Help</string>
     <string name="chat">Chat</string>
     <string name="friends">Friends</string>
+    <string name="zapamietaj_mnie">zapamiętaj mnie</string>
 </resources>

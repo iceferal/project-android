@@ -112,6 +112,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.logout:
                 Toast.makeText(this, "Wylogowano!", Toast.LENGTH_SHORT).show();
                 userLogout();
+                finish();
                 return true;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -166,7 +167,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void userLogout() {
-//        pConfig.wrireLoginStatus(false);
-        startActivity(new Intent(this, LoginActivity.class));
+        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+        startActivity(intent);
         finish();    }
 }
