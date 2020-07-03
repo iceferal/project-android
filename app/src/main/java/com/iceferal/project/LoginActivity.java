@@ -27,7 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -52,12 +51,7 @@ import com.iceferal.project.POJO.UserService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Arrays;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -116,8 +110,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 //        fb button
         fbButton = findViewById(R.id.fb);
-        FacebookSdk.sdkInitialize(LoginActivity.this);
-        callbackManager = CallbackManager.Factory.create();
+//        callbackManager = CallbackManager.Factory.create();
         facebookLogin();
 
         fbButton.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +121,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
 
 //        google login
-
         googleSignInButton = findViewById(R.id.google);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -139,10 +131,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 }
-
-
-
-
 //    public void printHashKey() {
 //        try {
 ////            PackageInfo info = getPackageManager().getPackageInfo("com.iceferal.project", PackageManager.GET_SIGNATURES);
@@ -213,10 +201,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
 //    logowanie fb
-    public void fbClick(View view) {
-        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
-        view.startAnimation(animAlpha);
-    }
+//    public void fbClick(View view) {
+//        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
+//        view.startAnimation(animAlpha);
+//    }
 
     public void facebookLogin() {
 
@@ -236,22 +224,20 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 String email = object.getString("email");
                                 String fbUserID = object.getString("id");
                                 String imageUrl = "https://graph.facebook.com/" + fbUserID + "/picture?type=normal";
-                                disconnectFromFacebook();
-                                Log.d("kurwa", name);
-                                Log.d("kurwa", imageUrl);
+//                                disconnectFromFacebook();
+                                Log.d("kurwa facebook", name);
+                                Log.d("kurwa facebook", email);
+                                Log.d("kurwa facebook", fbUserID);
 
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(intent);
                                 finish();
-                                // do action after Facebook login success
-                                // or call your API
                             }
                             catch (JSONException | NullPointerException e) {
                                 e.printStackTrace(); }
                         }
                     }
                 });
-
                 Bundle parameters = new Bundle();
                 parameters.putString("fields","id, name, email, gender, birthday");
                 request.setParameters(parameters);
@@ -259,22 +245,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
             @Override
             public void onCancel() {
-                Log.v("LoginScreen", "---onCancel"); }
-
+                Log.v("facebookLogin", "---onCancel"); }
             @Override
             public void onError(FacebookException error) {
-                // here write code when get error
-                Log.v("LoginScreen", "----onError: " + error.getMessage()); }
+                Log.v("facebookLogin", "----onError: " + error.getMessage()); }
         });
     }
 
     public void disconnectFromFacebook() {
         if (AccessToken.getCurrentAccessToken() == null) {
-            return;
-        }
-
-        new GraphRequest(
-                AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
+            return;    }
+        new GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
             @Override
             public void onCompleted(GraphResponse graphResponse) {
                 LoginManager.getInstance().logOut();  }
@@ -282,10 +263,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
 //    logowanie google
-    public void googleClick(View view) {
-        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
-        view.startAnimation(animAlpha);
-    }
+//    public void googleClick(View view) {
+//        Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.animation_alpha);
+//        view.startAnimation(animAlpha);
+//    }
 
     private void signIn() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
@@ -293,14 +274,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(LoginActivity.this);
         if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personGivenName = acct.getGivenName();
-            String personFamilyName = acct.getFamilyName();
-            String personEmail = acct.getEmail();
+            String person = acct.getDisplayName();
+            String name = acct.getGivenName();
+            String surname = acct.getFamilyName();
+            String email = acct.getEmail();
             String personId = acct.getId();
 
-            Log.d("kurwa google", personEmail);
-            Log.d("kurwa google", personName);
+            Log.d("kurwa google", email);
+            Log.d("kurwa google", person);
             Log.d("kurwa google", personId);
         }
     }

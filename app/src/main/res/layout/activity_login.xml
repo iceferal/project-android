@@ -73,6 +73,7 @@
 
     <FrameLayout
         android:id="@+id/FrameLayout1"
+        android:padding="3dp"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="2dp">
@@ -82,24 +83,21 @@
             style="@style/FacebookLoginButton"
             android:layout_width="fill_parent"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="25dp"
-            android:onClick="fbClick" />
+            android:layout_marginBottom="25dp" />
     </FrameLayout>
 
     <FrameLayout
         android:id="@+id/FrameLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_marginTop="10dp">
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/google"
-            android:layout_width="fill_parent"
+            style="@style/GoogleLoginButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#cf4333"
-            android:onClick="googleClick"
             android:text="@string/google_login"
-            android:padding="5dp"
             android:textColor="#ffffff"
             android:textStyle="bold" />
 
