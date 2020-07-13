@@ -109,6 +109,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.help:
                 Toast.makeText(this, "help kurwa mnie!", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.profil:
+                Toast.makeText(this, "profil kurwa!", Toast.LENGTH_SHORT).show();
+                return true;
             case R.id.logout:
                 Toast.makeText(this, "Wylogowano!", Toast.LENGTH_SHORT).show();
                 userLogout();

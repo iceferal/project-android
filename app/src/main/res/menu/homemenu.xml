@@ -39,6 +39,7 @@
             android:id="@+id/help"
             android:icon="@drawable/ic_baseline_build_24"
             android:title="@string/help" />
+
      </group>
 
 
@@ -46,6 +47,11 @@
     <group
         android:id="@+id/gp_three"
         android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/profil"
+            android:icon="@drawable/ic_baseline_how_to_reg_24"
+            android:title="@string/profil" />
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_baseline_remove_circle_outline_24"

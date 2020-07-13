@@ -1,6 +1,17 @@
 package com.iceferal.project.models;
 
+import android.content.Intent;
+import android.widget.Toast;
+
 import com.google.gson.annotations.SerializedName;
+import com.iceferal.project.HomeActivity;
+import com.iceferal.project.LoginActivity;
+import com.iceferal.project.POJO.UserService;
+import com.iceferal.project.RegisterActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class User {
 
@@ -24,6 +35,25 @@ public class User {
         this.login = login;
         this.email = email;
         this.password = password;
+    }
+
+    public void register() {
+        UserService userService = UserService.retrofit.create(UserService.class);
+        Call<User> userCall = userService.postUser(this);
+        userCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                String resCode = String.valueOf(response.code());
+                if(resCode.equals("200")) {
+                }
+                if(resCode.equals("500")) {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+            }
+        });
     }
 
     public Long getId() {

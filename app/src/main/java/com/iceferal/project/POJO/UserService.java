@@ -26,7 +26,7 @@ public interface UserService {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    @GET("/users")
+    @GET("/users/")
     Call<List<User>> getUsers();
 
     @GET("/users/{id}")

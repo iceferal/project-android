@@ -48,6 +48,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.Task;
 import com.iceferal.project.POJO.UserService;
+import com.iceferal.project.models.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private SignInButton googleSignInButton;
     private GoogleSignInClient googleSignInClient;
     private static final int RC_SIGN_IN = 0;
+    String mailcheck = "";
     UserService userService = UserService.retrofit.create(UserService.class);
 
     @Override
@@ -110,7 +112,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 //        fb button
         fbButton = findViewById(R.id.fb);
-//        callbackManager = CallbackManager.Factory.create();
         facebookLogin();
 
         fbButton.setOnClickListener(new View.OnClickListener() {
@@ -211,7 +212,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         loginManager = LoginManager.getInstance();
         callbackManager = CallbackManager.Factory.create();
         loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-
             @Override
             public void onSuccess(LoginResult loginResult) {
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
@@ -224,7 +224,31 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 String email = object.getString("email");
                                 String fbUserID = object.getString("id");
                                 String imageUrl = "https://graph.facebook.com/" + fbUserID + "/picture?type=normal";
-//                                disconnectFromFacebook();
+                                disconnectFromFacebook();
+
+                                String[] users = name.split(" ");
+                                String check = checkIt(email);
+                                if(check.equals("false")) {
+                                    Log.d("kurwa wtf", "almost add");
+                                    Log.d("kurwa checkIt", "dupa");
+                                    User user = new User(1 , users[0], users[1], name, email, fbUserID);
+                                    Call<User> userCall = userService.postUser(user);
+                                    userCall.enqueue(new Callback<User>() {
+                                        @Override
+                                        public void onResponse(Call<User> call, Response<User> response) {
+                                            String resCode = String.valueOf(response.code());
+                                            if(resCode.equals("200")) {
+                                                Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
+                                            if(resCode.equals("500")) {
+                                                Toast.makeText(LoginActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();   }
+                                        }
+                                        @Override
+                                        public void onFailure(Call<User> call, Throwable t) {
+                                            Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
+                                    });
+                                }
+                                if(check.equals("true")) { }
+
                                 Log.d("kurwa facebook", name);
                                 Log.d("kurwa facebook", email);
                                 Log.d("kurwa facebook", fbUserID);
@@ -280,9 +304,32 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             String email = acct.getEmail();
             String personId = acct.getId();
 
+            Log.d("kurwa google", name);
             Log.d("kurwa google", email);
-            Log.d("kurwa google", person);
             Log.d("kurwa google", personId);
+
+            String check = checkIt(email);
+            Log.d("kurwa google wtf", personId);
+            if (check == "false") {
+                Log.d("kurwa wtf", "almost add");
+                Log.d("kurwa checkIt", "dupa");
+                User user = new User(1 , name, surname, person, email, personId);
+                Call<User> userCall = userService.postUser(user);
+                userCall.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        String resCode = String.valueOf(response.code());
+                        if(resCode.equals("200")) {
+                            Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
+                        if(resCode.equals("500")) {
+                            Toast.makeText(LoginActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();   }
+                    }
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
+                });
+            }
+            if(check.equals("true")) { }
         }
     }
 
@@ -298,6 +345,40 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
             Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public String checkIt(String email) {
+        Call<String> mailCheck = userService.checkEmail(email);
+
+        mailCheck.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                mailcheck = response.body();
+                Log.d("kurwa sprawdz maila", mailcheck);   }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
+        });
+        return mailcheck;
+    }
+
+    public void addUser(String name, String surname, String login, String email, String password) {
+            Log.d("kurwa checkIt", "dupa");
+            User user = new User(1 , name, surname, login, email, password);
+            Call<User> userCall = userService.postUser(user);
+            userCall.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    String resCode = String.valueOf(response.code());
+                    if(resCode.equals("200")) {
+                        Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
+                    if(resCode.equals("500")) {
+                        Toast.makeText(LoginActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();   }
+                }
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+                    Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
+            });
     }
 }
 
