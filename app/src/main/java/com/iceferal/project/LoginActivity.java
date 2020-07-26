@@ -35,6 +35,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
+import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -131,16 +132,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
-        boolean loggedOut = AccessToken.getCurrentAccessToken() == null;
-        if (loggedOut) {
-//            Picasso.with(this).load(Profile.getCurrentProfile().getProfilePictureUri(200, 200)).into(imageView);
-//            Log.d("TAG", "Username is: " + Profile.getCurrentProfile().getName());
 
-            //Using Graph API
-            getUserProfile(AccessToken.getCurrentAccessToken());
-        }
 
 // fb button
+        boolean loggedOut = AccessToken.getCurrentAccessToken() == null;
+//        if (!loggedOut) {
+////            Picasso.with(this).load(Profile.getCurrentProfile().getProfilePictureUri(200, 200)).into(imageView);
+//            Log.d("kurwa", "Username is: " + Profile.getCurrentProfile().getName());
+//
+//            //Using Graph API
+//            getUserProfile(AccessToken.getCurrentAccessToken());        }
+
         fbButton = findViewById(R.id.fb);
         fbButton.setReadPermissions(Arrays.asList("email", "public_profile"));
         callbackManager = CallbackManager.Factory.create();
@@ -152,8 +154,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 //loginResult.getAccessToken();
                 //loginResult.getRecentlyDeniedPermissions()
                 //loginResult.getRecentlyGrantedPermissions()
-                boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
                 getUserProfile(AccessToken.getCurrentAccessToken());
+                boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
+//                getUserProfile(AccessToken.getCurrentAccessToken());
                 Log.d("API123", loggedIn + " ??");
 
             }
@@ -261,7 +264,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 String email = object.getString("email");
                                 String fbUserID = object.getString("id");
                                 String imageUrl = "https://graph.facebook.com/" + fbUserID + "/picture?type=normal";
-                                disconnectFromFacebook();
+//                                disconnectFromFacebook();
 
                                 String[] users = name.split(" ");
                                 String check = checkIt(email);
@@ -391,11 +394,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void getUserProfile(AccessToken currentAccessToken) {
-        GraphRequest request = GraphRequest.newMeRequest(
-                currentAccessToken, new GraphRequest.GraphJSONObjectCallback() {
+        GraphRequest request = GraphRequest.newMeRequest(currentAccessToken, new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        Log.d("TAG", object.toString());
+                        Log.d("kurwa", object.toString());
                         try {
                             String first_name = object.getString("first_name");
                             String last_name = object.getString("last_name");
@@ -420,6 +422,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         request.executeAsync();
 
     }
+
 }
 
 
