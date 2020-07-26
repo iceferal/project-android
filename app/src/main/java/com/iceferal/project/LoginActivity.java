@@ -110,16 +110,15 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         textView.setText(span);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
 
-//        fb button
-        fbButton = findViewById(R.id.fb);
-        facebookLogin();
 
-        fbButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loginManager.logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile", "user_birthday"));
-            }
-        });
+//        facebookLogin();
+//
+//        fbButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                loginManager.logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile", "user_birthday"));
+//            }
+//        });
 
 //        google login
         googleSignInButton = findViewById(R.id.google);
@@ -131,7 +130,46 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 signIn();
             }
         });
-}
+
+        boolean loggedOut = AccessToken.getCurrentAccessToken() == null;
+        if (loggedOut) {
+//            Picasso.with(this).load(Profile.getCurrentProfile().getProfilePictureUri(200, 200)).into(imageView);
+//            Log.d("TAG", "Username is: " + Profile.getCurrentProfile().getName());
+
+            //Using Graph API
+            getUserProfile(AccessToken.getCurrentAccessToken());
+        }
+
+// fb button
+        fbButton = findViewById(R.id.fb);
+        fbButton.setReadPermissions(Arrays.asList("email", "public_profile"));
+        callbackManager = CallbackManager.Factory.create();
+
+        fbButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+                //loginResult.getAccessToken();
+                //loginResult.getRecentlyDeniedPermissions()
+                //loginResult.getRecentlyGrantedPermissions()
+                boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
+                getUserProfile(AccessToken.getCurrentAccessToken());
+                Log.d("API123", loggedIn + " ??");
+
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });
+    }
+
 //    public void printHashKey() {
 //        try {
 ////            PackageInfo info = getPackageManager().getPackageInfo("com.iceferal.project", PackageManager.GET_SIGNATURES);
@@ -168,8 +206,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onResponse(Call<String> call, Response<String> response) {
                 String loginCheck = response.body();
                 if(loginCheck == "false") {
-                    login.setError("podany login nie istnieje");                }
-            }
+                    login.setError("podany login nie istnieje");                }            }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();            }
@@ -179,26 +216,26 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             String check = log + "_" + pass;
             Call<String> checkIt = userService.checkit(check);
             checkIt.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String checkIt = response.body();
-                if(checkIt == "false") {
-                    Toast.makeText(LoginActivity.this, "login lub hasło są niewłaściwe.", Toast.LENGTH_SHORT).show();                }
-                if(checkIt == "true") {
-                   Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();               }
-            }
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();
-//                furtka dla offline rest api:
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    String checkIt = response.body();
+                    if(checkIt == "false") {
+                        Toast.makeText(LoginActivity.this, "login lub hasło są niewłaściwe.", Toast.LENGTH_SHORT).show();                }
+                    if(checkIt == "true") {
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();               }
+                }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();
+//   furtka dla offline rest api:
 //                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
 //                startActivity(intent);
 //                finish();
 //                koniec furtki
                 }
-        }); }
+            }); }
     }
 
 //    logowanie fb
@@ -230,22 +267,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 String check = checkIt(email);
                                 if(check.equals("false")) {
                                     Log.d("kurwa wtf", "almost add");
-                                    Log.d("kurwa checkIt", "dupa");
-                                    User user = new User(1 , users[0], users[1], name, email, fbUserID);
-                                    Call<User> userCall = userService.postUser(user);
-                                    userCall.enqueue(new Callback<User>() {
-                                        @Override
-                                        public void onResponse(Call<User> call, Response<User> response) {
-                                            String resCode = String.valueOf(response.code());
-                                            if(resCode.equals("200")) {
-                                                Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
-                                            if(resCode.equals("500")) {
-                                                Toast.makeText(LoginActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();   }
-                                        }
-                                        @Override
-                                        public void onFailure(Call<User> call, Throwable t) {
-                                            Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
-                                    });
+                                    User user = new User(0, users[0], users[1], name, email, fbUserID);
+                                    user.register();
+//                                    addUser(users[0], users[1], name, email, fbUserID);
                                 }
                                 if(check.equals("true")) { }
 
@@ -312,22 +336,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.d("kurwa google wtf", personId);
             if (check == "false") {
                 Log.d("kurwa wtf", "almost add");
-                Log.d("kurwa checkIt", "dupa");
-                User user = new User(1 , name, surname, person, email, personId);
-                Call<User> userCall = userService.postUser(user);
-                userCall.enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        String resCode = String.valueOf(response.code());
-                        if(resCode.equals("200")) {
-                            Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
-                        if(resCode.equals("500")) {
-                            Toast.makeText(LoginActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();   }
-                    }
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
-                });
+                addUser(name, surname, person, email, personId);
             }
             if(check.equals("true")) { }
         }
@@ -363,22 +372,53 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     public void addUser(String name, String surname, String login, String email, String password) {
-            Log.d("kurwa checkIt", "dupa");
-            User user = new User(1 , name, surname, login, email, password);
-            Call<User> userCall = userService.postUser(user);
-            userCall.enqueue(new Callback<User>() {
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    String resCode = String.valueOf(response.code());
-                    if(resCode.equals("200")) {
-                        Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
-                    if(resCode.equals("500")) {
-                        Toast.makeText(LoginActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();   }
-                }
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
-            });
+        Log.d("kurwa checkIt", "dupa");
+        User user = new User(1 , name, surname, login, email, password);
+        Call<User> userCall = userService.postUser(user);
+        userCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                String resCode = String.valueOf(response.code());
+                if(resCode.equals("200")) {
+                    Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
+                if(resCode.equals("500")) {
+                    Toast.makeText(LoginActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();   }
+            }
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
+        });
+    }
+
+    private void getUserProfile(AccessToken currentAccessToken) {
+        GraphRequest request = GraphRequest.newMeRequest(
+                currentAccessToken, new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        Log.d("TAG", object.toString());
+                        try {
+                            String first_name = object.getString("first_name");
+                            String last_name = object.getString("last_name");
+                            String email = object.getString("email");
+                            String id = object.getString("id");
+                            String image_url = "https://graph.facebook.com/" + id + "/picture?type=normal";
+
+                            Log.d("kurwa facebook", first_name);
+                            Log.d("kurwa facebook", email);
+                            Log.d("kurwa facebook", id);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "first_name,last_name,email,id");
+        request.setParameters(parameters);
+        request.executeAsync();
+
     }
 }
 
