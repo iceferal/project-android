@@ -15,6 +15,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        LoginActivity.disconnectFromFacebook();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

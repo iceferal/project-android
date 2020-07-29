@@ -112,16 +112,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         textView.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-//        facebookLogin();
-//
-//        fbButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                loginManager.logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile", "user_birthday"));
-//            }
-//        });
 
-//        google login
+// google login
         googleSignInButton = findViewById(R.id.google);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -131,7 +123,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 signIn();
             }
         });
-
 
 
 // fb button
@@ -157,19 +148,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 getUserProfile(AccessToken.getCurrentAccessToken());
                 boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
 //                getUserProfile(AccessToken.getCurrentAccessToken());
-                Log.d("API123", loggedIn + " ??");
-
-            }
-
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+                Log.d("API123", loggedIn + " ??");            }
             @Override
             public void onCancel() {
-                // App code
-            }
-
+                 }
             @Override
             public void onError(FacebookException exception) {
-                // App code
-            }
+                }
         });
     }
 
@@ -247,65 +235,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 //        view.startAnimation(animAlpha);
 //    }
 
-    public void facebookLogin() {
-
-        loginManager = LoginManager.getInstance();
-        callbackManager = CallbackManager.Factory.create();
-        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        if (object != null) {
-                            try {
-                                String name = object.getString("name");
-                                String email = object.getString("email");
-                                String fbUserID = object.getString("id");
-                                String imageUrl = "https://graph.facebook.com/" + fbUserID + "/picture?type=normal";
-//                                disconnectFromFacebook();
-
-                                String[] users = name.split(" ");
-                                String check = checkIt(email);
-                                if(check.equals("false")) {
-                                    Log.d("kurwa wtf", "almost add");
-                                    User user = new User(0, users[0], users[1], name, email, fbUserID);
-                                    user.register();
-//                                    addUser(users[0], users[1], name, email, fbUserID);
-                                }
-                                if(check.equals("true")) { }
-
-                                Log.d("kurwa facebook", name);
-                                Log.d("kurwa facebook", email);
-                                Log.d("kurwa facebook", fbUserID);
-
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            catch (JSONException | NullPointerException e) {
-                                e.printStackTrace(); }
-                        }
-                    }
-                });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields","id, name, email, gender, birthday");
-                request.setParameters(parameters);
-                request.executeAsync();
-            }
-            @Override
-            public void onCancel() {
-                Log.v("facebookLogin", "---onCancel"); }
-            @Override
-            public void onError(FacebookException error) {
-                Log.v("facebookLogin", "----onError: " + error.getMessage()); }
-        });
-    }
-
-    public void disconnectFromFacebook() {
-        if (AccessToken.getCurrentAccessToken() == null) {
-            return;    }
+    public static void disconnectFromFacebook() {
+        if (AccessToken.getCurrentAccessToken() == null) {  return;    }
         new GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
             @Override
             public void onCompleted(GraphResponse graphResponse) {
@@ -335,13 +266,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.d("kurwa google", email);
             Log.d("kurwa google", personId);
 
-            String check = checkIt(email);
-            Log.d("kurwa google wtf", personId);
-            if (check == "false") {
-                Log.d("kurwa wtf", "almost add");
-                addUser(name, surname, person, email, personId);
-            }
-            if(check.equals("true")) { }
+            addUser(name, surname, person, email, personId);
         }
     }
 
@@ -374,7 +299,35 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         return mailcheck;
     }
 
-    public void addUser(String name, String surname, String login, String email, String password) {
+    private void getUserProfile(AccessToken currentAccessToken) {
+        GraphRequest request = GraphRequest.newMeRequest(currentAccessToken, new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            String first_name = object.getString("first_name");
+                            String last_name = object.getString("last_name");
+                            String email = object.getString("email");
+                            String id = object.getString("id");
+                            String image_url = "https://graph.facebook.com/" + id + "/picture?type=normal";
+
+                            Log.d("kurwa facebook", first_name);
+                            Log.d("kurwa facebook", email);
+                            Log.d("kurwa facebook", id);
+
+                            addUser(first_name, last_name, first_name + " " + last_name, email, id);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();  }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "first_name,last_name,email,id");
+        request.setParameters(parameters);
+        request.executeAsync();
+        Log.d("kurwa facebook param", parameters.toString());
+    }
+
+    private void addUser(String name, String surname, String login, String email, String password) {
         Log.d("kurwa checkIt", "dupa");
         User user = new User(1 , name, surname, login, email, password);
         Call<User> userCall = userService.postUser(user);
@@ -391,36 +344,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onFailure(Call<User> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
         });
-    }
-
-    private void getUserProfile(AccessToken currentAccessToken) {
-        GraphRequest request = GraphRequest.newMeRequest(currentAccessToken, new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        Log.d("kurwa", object.toString());
-                        try {
-                            String first_name = object.getString("first_name");
-                            String last_name = object.getString("last_name");
-                            String email = object.getString("email");
-                            String id = object.getString("id");
-                            String image_url = "https://graph.facebook.com/" + id + "/picture?type=normal";
-
-                            Log.d("kurwa facebook", first_name);
-                            Log.d("kurwa facebook", email);
-                            Log.d("kurwa facebook", id);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                });
-
-        Bundle parameters = new Bundle();
-        parameters.putString("fields", "first_name,last_name,email,id");
-        request.setParameters(parameters);
-        request.executeAsync();
-
     }
 
 }

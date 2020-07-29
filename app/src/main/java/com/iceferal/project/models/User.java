@@ -37,24 +37,6 @@ public class User {
         this.password = password;
     }
 
-    public void register() {
-        UserService userService = UserService.retrofit.create(UserService.class);
-        Call<User> userCall = userService.postUser(this);
-        userCall.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                String resCode = String.valueOf(response.code());
-                if(resCode.equals("200")) {
-                }
-                if(resCode.equals("500")) {
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-            }
-        });
-    }
 
     public Long getId() {
         return id;
@@ -77,9 +59,7 @@ public class User {
         this.surname = surname;
     }
 
-    public String getLogin() {
-        return login;
-    }
+    public String getLogin() { return login; }
     public void setLogin(String login) {
         this.login = login;
     }

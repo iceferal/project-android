@@ -34,6 +34,7 @@ import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.navigation.NavigationView;
+import com.iceferal.project.models.User;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -170,6 +171,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void userLogout() {
+        LoginActivity.disconnectFromFacebook();
         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();    }
