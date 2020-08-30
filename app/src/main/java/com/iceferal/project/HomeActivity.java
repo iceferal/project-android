@@ -95,10 +95,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.drive:
-                Toast.makeText(this, "drive kurwa", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "drive", Toast.LENGTH_SHORT).show();
+                Intent drive_intent = new Intent(HomeActivity.this, DriveActivity.class);
+                startActivity(drive_intent);
                 return true;
             case R.id.home:
-                Toast.makeText(this, "home bitch!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "home!", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.friends:
                 Toast.makeText(this, "friends!", Toast.LENGTH_SHORT).show();
@@ -107,15 +109,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "chat!", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.faq:
-                Toast.makeText(this, "faq!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "faq!", Toast.LENGTH_SHORT).show();
+                Intent faq_intent = new Intent(HomeActivity.this, FaqActivity.class);
+                startActivity(faq_intent);
                 return true;
             case R.id.help:
 //                Toast.makeText(this, "help mnie!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(HomeActivity.this, HelpActivity.class);
-                startActivity(intent);
+                Intent help_intent = new Intent(HomeActivity.this, HelpActivity.class);
+                startActivity(help_intent);
                 return true;
             case R.id.profil:
-                Toast.makeText(this, "profil kurwa!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "profil!", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.logout:
                 Toast.makeText(this, "Wylogowano!", Toast.LENGTH_SHORT).show();
