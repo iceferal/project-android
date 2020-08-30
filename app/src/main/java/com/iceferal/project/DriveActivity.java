@@ -14,7 +14,7 @@ public class DriveActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.drive_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("DRIVE");
+        getSupportActionBar().setTitle("Drive");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 

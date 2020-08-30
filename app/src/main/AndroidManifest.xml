@@ -46,10 +46,19 @@
             android:name=".DriveActivity"
             android:parentActivityName=".HomeActivity"></activity>
         <activity
+            android:name=".ChatActivity"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
             android:name=".HelpActivity"
             android:parentActivityName=".HomeActivity"></activity>
         <activity
+            android:name=".FriendsActivity"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
             android:name=".FaqActivity"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".ProfilActivity"
             android:parentActivityName=".HomeActivity"></activity>
         <activity android:name=".StartActivity" >
             <intent-filter>

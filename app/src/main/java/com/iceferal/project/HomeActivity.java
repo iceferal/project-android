@@ -103,10 +103,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "home!", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.friends:
-                Toast.makeText(this, "friends!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "friends!", Toast.LENGTH_SHORT).show();
+                Intent friends_intent = new Intent(HomeActivity.this, FriendsActivity.class);
+                startActivity(friends_intent);
                 return true;
             case R.id.chat:
-                Toast.makeText(this, "chat!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "chat!", Toast.LENGTH_SHORT).show();
+                Intent chat_intent = new Intent(HomeActivity.this, ChatActivity.class);
+                startActivity(chat_intent);
                 return true;
             case R.id.faq:
 //                Toast.makeText(this, "faq!", Toast.LENGTH_SHORT).show();
@@ -119,7 +123,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(help_intent);
                 return true;
             case R.id.profil:
-                Toast.makeText(this, "profil!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "profil!", Toast.LENGTH_SHORT).show();
+                Intent profil_intent = new Intent(HomeActivity.this, ProfilActivity.class);
+                startActivity(profil_intent);
                 return true;
             case R.id.logout:
                 Toast.makeText(this, "Wylogowano!", Toast.LENGTH_SHORT).show();
