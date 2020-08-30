@@ -338,7 +338,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 if(resCode.equals("200")) {
                     Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
                 if(resCode.equals("500")) {
-                    Toast.makeText(LoginActivity.this, "Blad przy tworzeniu konta.", Toast.LENGTH_SHORT).show();   }
+                    Toast.makeText(LoginActivity.this, "A my już się znamy :)", Toast.LENGTH_SHORT).show();   }
             }
             @Override
             public void onFailure(Call<User> call, Throwable t) {

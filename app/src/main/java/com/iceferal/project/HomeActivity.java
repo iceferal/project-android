@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private void getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+//            ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
             return;
         }
         Task<Location> task = client.getLastLocation();
@@ -110,7 +110,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "faq!", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.help:
-                Toast.makeText(this, "help kurwa mnie!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "help mnie!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomeActivity.this, HelpActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.profil:
                 Toast.makeText(this, "profil kurwa!", Toast.LENGTH_SHORT).show();
