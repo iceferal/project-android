@@ -41,19 +41,19 @@
     <string name="friends">Friends</string>
     <string name="zapamietaj_mnie">zapamiętaj mnie</string>
     <string name="profil">Profil</string>
-    <string name="help_text">Jeśli jesteś w stanie ocenić na czym polega awaria motocykla, wybierz odpowiedni układ i usterkę. W innym wypadku zaznacz pole: "Ciężko ocenić" i opisz usterkę swoimi słowami</string>
+    <string name="wybierz_uklad">Wybierz układ</string>
+    <string name="help_text">Jeśli jesteś w stanie ocenić na czym polega awaria motocykla, wybierz odpowiedni układ i usterkę. Jeśli usterki nie ma na liście, albo nie jesteś w stanie ocenić, zaznacz pole: "Ciężko ocenić" i opisz usterkę swoimi słowami</string>
     <string name="Ciezko_ocenic">Ciężko ocenić</string>
     <string name="opisz_usterk">Opisz usterkę</string>
 
-    <string-array name="spinner_no1">
-        <item>Wybierz układ:</item>
+    <string-array name="uklad">
+        <item>Układ Elektryczny</item>
+        <item>Układ Hamulcowy</item>
         <item>Układ Napędowy</item>
         <item>Układ Chłodzenia</item>
-        <item>Układ Elektryczny</item>
+        <item>Układ Paliwowy</item>
+        <item>Układ Zawieszenia</item>
         <item>Silnik</item>
     </string-array>
 
-    <string-array name="spinner_no2">
-        <item>Wybierz usterkę:</item>
-    </string-array>
 </resources>

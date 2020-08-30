@@ -52,6 +52,9 @@
             <Spinner
                 android:id="@+id/spinner_no1"
                 android:verticalScrollbarPosition="defaultPosition"
+                android:prompt="@string/wybierz_uklad"
+                android:entries="@array/uklad"
+                android:spinnerMode="dialog"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
