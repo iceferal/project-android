@@ -22,7 +22,7 @@ public class User {
     @SerializedName("surname")
     private String surname;
     @SerializedName("login")
-    private String login;
+    private static String login;
     @SerializedName("email")
     private String email;
     @SerializedName("password")
@@ -59,7 +59,7 @@ public class User {
         this.surname = surname;
     }
 
-    public String getLogin() { return login; }
+    public static String getLogin() { return login; }
     public void setLogin(String login) {
         this.login = login;
     }

@@ -82,17 +82,19 @@ public class HelpActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(position == 0) {
-            state = new String[]{"Dupa", "Wino", "Cocolino"};      }
+            state = new String[]{"rozładowany akumulator", "brak ładowania", "przepalony bezpiecznik", "awaria rozrusznika"};      }
         if(position == 1) {
-            state = new String[]{"Chuj", "Dupa", "Kamieni Kupa"};  }
+            state = new String[]{"uszkodzone tarcze", "uszkodzone klocki", "zerwana linka hamulcowa", "brak płynu hamulcowego", "złamana klamka hamulca"};  }
         if(position == 2) {
-            state = new String[]{"Dupa", "Wino", "Cocolino"};      }
+            state = new String[]{"poluzowana zębatka", "uszkodzona zębatka", "uszkodzony łańcuch", "przebita opona"};      }
         if(position == 3) {
-            state = new String[]{"Chuj", "Dupa", "Kamieni Kupa"};  }
+            state = new String[]{"awaria termostatu", "uszkodzona chłodnica", "awaria pompy wody", "wyciek płynu"};  }
         if(position == 4) {
-            state = new String[]{"Dupa", "Wino", "Cocolino"};      }
+            state = new String[]{"brak paliwa", "nieszczelny przewód paliwowy", "uszkodzona pompa paliwa", "zatkany filtr paliwa"};      }
         if(position == 5) {
-            state = new String[]{"Chuj", "Dupa", "Kamieni Kupa"};  }
+            state = new String[]{"uszkodzony przedni teleskop", "uszkodzony tylny amortyzator"};  }
+        if(position == 6) {
+            state = new String[]{"wyciek oleju", "brak oleju", "uszkodzona uszczelka", "pęknięta komora silnika", "wzrost temperatury silnika"};  }
         ArrayAdapter<String> addicted = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, state);
         spinner_no2.setAdapter(addicted);
     }

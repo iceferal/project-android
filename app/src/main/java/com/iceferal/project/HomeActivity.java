@@ -14,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -27,9 +28,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.iceferal.project.models.User;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    TextView userName;
     private DrawerLayout drawer;
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
@@ -38,6 +41,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+//        userName = (TextView) findViewById(R.id.userName);
+//        String name = User.getLogin();
+//        userName.setText("lol kurwa lol");
 
 //^^ up menu ^^
         Toolbar toolbar = findViewById(R.id.home_toolbar);
