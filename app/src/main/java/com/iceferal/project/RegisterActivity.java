@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.iceferal.project.POJO.UserService;
 import com.iceferal.project.models.User;
 
@@ -24,6 +26,11 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.register_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Rejestracja");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         login = findViewById(R.id.login);
         pass = findViewById(R.id.pass);
@@ -83,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         if(status) {
-            User user = new User(id,"null", "null", log, mail, password);
+            User user = new User((long) id,"null", "null", log, mail, password);
             Call<User> userCall = userService.postUser(user);
             userCall.enqueue(new Callback<User>() {
                 @Override

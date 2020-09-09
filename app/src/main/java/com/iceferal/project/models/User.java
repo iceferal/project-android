@@ -22,13 +22,13 @@ public class User {
     @SerializedName("surname")
     private String surname;
     @SerializedName("login")
-    private static String login;
+    private String login;
     @SerializedName("email")
     private String email;
     @SerializedName("password")
     private String password;
 
-    public User(int id, String name, String surname, String login, String email, String password) {
+    public User(Long id, String name, String surname, String login, String email, String password) {
         this.id = this.id;
         this.name = name;
         this.surname  = surname;
@@ -59,7 +59,7 @@ public class User {
         this.surname = surname;
     }
 
-    public static String getLogin() { return login; }
+    public String getLogin() { return login; }
     public void setLogin(String login) {
         this.login = login;
     }

@@ -329,12 +329,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void addUser(String name, String surname, String login, String email, String password) {
         Log.d("kurwa checkIt", "dupa");
-        User user = new User(1 , name, surname, login, email, password);
+        User user = new User((long) 1, name, surname, login, email, password);
         Call<User> userCall = userService.postUser(user);
         userCall.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 String resCode = String.valueOf(response.code());
+                Log.d("kurwa gowno param", resCode);
                 if(resCode.equals("200")) {
                     Toast.makeText(LoginActivity.this, "Użytkownik zarejestrowany/zalogowany!", Toast.LENGTH_LONG).show();   }
                 if(resCode.equals("500")) {
