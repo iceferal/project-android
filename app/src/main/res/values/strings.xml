@@ -45,6 +45,7 @@
     <string name="help_text">Jeśli jesteś w stanie ocenić na czym polega awaria motocykla, wybierz odpowiedni układ i usterkę. Jeśli usterki nie ma na liście, albo nie jesteś w stanie ocenić, zaznacz pole: "Ciężko ocenić" i opisz usterkę swoimi słowami</string>
     <string name="Ciezko_ocenic">Ciężko ocenić</string>
     <string name="opisz_usterk">Opisz usterkę</string>
+    <string name="ZAREJESTRUJ">ZAREJESTRUJ</string>
 
     <string-array name="uklad">
         <item>Układ Elektryczny</item>
