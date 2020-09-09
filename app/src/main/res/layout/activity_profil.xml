@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/green"
     android:id="@+id/profil_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,18 +12,267 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:background="@drawable/regradient"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/profil_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorSecondary"
+            android:elevation="4dp"
             android:theme="?attr/actionBarTheme"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:elevation="4dp"/>
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/gradient"
+                android:layout_height="180dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:elevation="1dp"
+                android:src="@drawable/heyroad"
+                app:cardCornerRadius="10dp"
+                app:civ_border_color="#000000"
+                app:civ_border_width="3dp" />
+
+                <TextView
+                    android:id="@+id/logo"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="150dp"
+                    android:textStyle="bold"
+                    android:onClick="changePic"
+                    android:textSize="15dp"
+                    android:textColor="#686868"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zmień logo" />
+            </FrameLayout>
+
+        <TextView
+            android:id="@+id/basicData"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Podstawowe dane użytkownika:" />
+
+        <TextView
+            android:id="@+id/name"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="imię:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/imię"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/surname"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nazwisko:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/surname_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/nazwisko"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/login"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="login:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/login"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="e-mail:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/email"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/haslo"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hasło:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/hasło_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/hasło"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/daneBtn"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:padding="5dp"
+            android:text="@string/aktualizuj"
+            android:onClick="daneBtn"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:background="#000000"
+            android:layout_height="2dp" />
+
+        <TextView
+            android:id="@+id/motorData"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Dane motocykla i stylu jazdy:" />
+
+        <TextView
+            android:id="@+id/moto"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Producent motocykla:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/moto_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/motocykl"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/model"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="model:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/model_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/model"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/rocznik"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="rocznik:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rocznik_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/rocznik"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/styl"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="styl jazdy:" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/styl_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:textAlignment="center"
+            android:hint="@string/styl_jazdy"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/motoBtn"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:padding="5dp"
+            android:text="@string/aktualizuj"
+            android:onClick="motoBtn"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:background="#000000"
+            android:layout_height="2dp" />
 
     </LinearLayout>
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</ScrollView>

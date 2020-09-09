@@ -46,6 +46,15 @@
     <string name="Ciezko_ocenic">Ciężko ocenić</string>
     <string name="opisz_usterk">Opisz usterkę</string>
     <string name="ZAREJESTRUJ">ZAREJESTRUJ</string>
+    <string name="imię">imię</string>
+    <string name="nazwisko">nazwisko</string>
+    <string name="hasło">hasło</string>
+    <string name="email">e-mail</string>
+    <string name="aktualizuj">aktualizauj</string>
+    <string name="motocykl">motocykl</string>
+    <string name="model">model</string>
+    <string name="rocznik">rocznik</string>
+    <string name="styl_jazdy">styl jazdy</string>
 
     <string-array name="uklad">
         <item>Układ Elektryczny</item>
