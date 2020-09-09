@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/backapi"
     android:id="@+id/profil_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/regradient"
+
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
@@ -28,11 +29,11 @@
                 android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:background="@drawable/gradient"
-                android:layout_height="180dp">
+                android:layout_height="160dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:layout_gravity="center"
                 android:elevation="1dp"
                 android:src="@drawable/heyroad"
@@ -44,7 +45,7 @@
                     android:id="@+id/logo"
                     android:layout_gravity="end"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="150dp"
+                    android:layout_marginTop="125dp"
                     android:textStyle="bold"
                     android:onClick="changePic"
                     android:textSize="15dp"
@@ -64,7 +65,6 @@
             android:text="Podstawowe dane użytkownika:" />
 
         <TextView
-            android:id="@+id/name"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -83,7 +83,6 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/surname"
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
@@ -102,7 +101,6 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/login"
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
@@ -121,7 +119,6 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/email"
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
@@ -140,7 +137,6 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/haslo"
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
@@ -175,7 +171,6 @@
             android:layout_height="2dp" />
 
         <TextView
-            android:id="@+id/motorData"
             android:gravity="center"
             android:layout_marginTop="12dp"
             android:layout_width="match_parent"
@@ -184,7 +179,6 @@
             android:text="Dane motocykla i stylu jazdy:" />
 
         <TextView
-            android:id="@+id/moto"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -203,7 +197,6 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/model"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -222,7 +215,6 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/rocznik"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -241,7 +233,6 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/styl"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"

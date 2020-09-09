@@ -50,11 +50,22 @@
     <string name="nazwisko">nazwisko</string>
     <string name="hasło">hasło</string>
     <string name="email">e-mail</string>
-    <string name="aktualizuj">aktualizauj</string>
+    <string name="aktualizuj">aktualizuj</string>
     <string name="motocykl">motocykl</string>
     <string name="model">model</string>
     <string name="rocznik">rocznik</string>
     <string name="styl_jazdy">styl jazdy</string>
+    <string name="q.no1">Tak. Początkowa rejestracja, a następnie logowanie się do aplikacji pozwala nam na przechowywanie w naszej bazie danych informacji na temat twojego profilu, motocykla i pokonanych przez Ciebie tras.</string>
+    <string name="q.no2">Aplikacja dostępna jest dla każdej osoby, która ma ochotę z niej korzystać. Nie prowadzimy weryfikacji wiekowej, ani nie określamy żadnych minimalnych wymagań dla użytkowników.
+        Każdy kto ma chęć korzystania ma do tego pełne prawo. Zachęcamy najbardziej tych, którzy należą do grona motocyklistów, gdyż to dla nich ta aplikacja jest dedykowana.</string>
+    <string name="q.no3">Na dzień dzisiejszy aplikacja jest dostępna tylko dla użytkowników smartphonów z systemem Android. W naszych planach mamy poszerzenie funkcjonalności o system iOS, oraz stworzenie wersji desktopowej,
+        która pozwoli na edycję naszego profilu, przeglądanie pokonanych tras i komunikowanie się z grupą znajomych.</string>
+    <string name="q.no4">Nie. Korzystanie z aplikacji jest zupełnie bezpłatne: nie wymaga żanych przelewów, abonamentów czy jakiejkolwiek innej formy płatności. Została napisana przez motocyklistę dla motocyklistów po to,
+        aby dać więcej przyjemności z tego co już same w sobie jest przyjemne.</string>
+    <string name="q.no5">Jak już zapewne zauważyłeś/zauważyłaś pierwszym krokiem jest rejestracja. Następnie na ekranie domowym zobaczysz ogłoszenia osób z twojej okolicy, które szukają osób do wspólnej jazdy na motocyklu.
+        Jeśli nie znajdziesz nikogo z twoich stron, możesz skorzystać z opcji Drive, po to, aby zadeklarować swoją chęć do jazdy w grupie. Osoba, która zauważy twoje ogłoszenie wyśle Ci informację na temat swojego stylu jazdy,
+        czasu jaki planuje poświęcić na jazdę, razem z prośbą o Twoją akceptację. Jeśli zaakceptujesz tę prosbę, aplikacja wyznaczy sugerowane miejsce na spotkanie. Po powrocie do domu masz możliwość zaproszenia danej osoby
+        do grona znajomych, aby móc ponowić wspólną przejażdżkę.</string>
 
     <string-array name="uklad">
         <item>Układ Elektryczny</item>
