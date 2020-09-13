@@ -12,6 +12,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,10 +32,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.iceferal.project.models.User;
+import com.squareup.picasso.Picasso;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView userName;
+    String photoUrl = "https://scontent-frx5-1.xx.fbcdn.net/v/t31.0-8/11879083_875916405829012_586549721183308009_o.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=iUx7UDu92vgAX-6ltAe&_nc_ht=scontent-frx5-1.xx&oh=e7beda289ca693dc95a4f2aab724eeb7&oe=5F822123";
     private DrawerLayout drawer;
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
@@ -52,10 +54,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         View nav = navigationView.getHeaderView(0);
-        TextView userName= (TextView) nav.findViewById(R.id.userName);
-        TextView userMail= (TextView) nav.findViewById(R.id.userMail);
+        TextView userName = (TextView) nav.findViewById(R.id.userName);
+        TextView userMail = (TextView) nav.findViewById(R.id.userMail);
+        ImageView imageView = (ImageView) nav.findViewById(R.id.imageView);
         userName.setText("lol kurwa lol");
         userMail.setText("chuja.mam@i.ci.dam");
+        Picasso.get().load(photoUrl).resize(250, 250).into(imageView);
 
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.menu_opener, R.string.menu_closer);
