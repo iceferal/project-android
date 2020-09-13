@@ -66,6 +66,7 @@
         Jeśli nie znajdziesz nikogo z twoich stron, możesz skorzystać z opcji Drive, po to, aby zadeklarować swoją chęć do jazdy w grupie. Osoba, która zauważy twoje ogłoszenie wyśle Ci informację na temat swojego stylu jazdy,
         czasu jaki planuje poświęcić na jazdę, razem z prośbą o Twoją akceptację. Jeśli zaakceptujesz tę prosbę, aplikacja wyznaczy sugerowane miejsce na spotkanie. Po powrocie do domu masz możliwość zaproszenia danej osoby
         do grona znajomych, aby móc ponowić wspólną przejażdżkę.</string>
+    <string name="q.no6">Niestety nie. Na dzień dzisiejszy aplikacja wymaga połączenia z internetem. Ale w dalszych planach rozwoju mamy zamiar rozbudować aplikację o właśnie taką możliwość.</string>
 
     <string-array name="uklad">
         <item>Układ Elektryczny</item>

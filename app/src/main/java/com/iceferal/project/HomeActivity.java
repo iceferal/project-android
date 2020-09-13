@@ -14,6 +14,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,16 +44,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-//        userName = (TextView) findViewById(R.id.userName);
-//        String name = User.getLogin();
-//        userName.setText("lol kurwa lol");
-
 //^^ up menu ^^
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.home_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        View nav = navigationView.getHeaderView(0);
+        TextView userName= (TextView) nav.findViewById(R.id.userName);
+        TextView userMail= (TextView) nav.findViewById(R.id.userMail);
+        userName.setText("lol kurwa lol");
+        userMail.setText("chuja.mam@i.ci.dam");
+
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.menu_opener, R.string.menu_closer);
         drawer.addDrawerListener(toggle);
