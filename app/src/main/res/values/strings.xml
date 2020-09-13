@@ -71,6 +71,7 @@
     <string name="remove">Jeśli nie chcesz już korzystać z aplikacji, albo uważasz, że nie będzie Ci już potrzebna, możesz usunąć swój profil z bazy danych.
         Pamiętaj jednak, że robiąć to, usunięte zostaną wszelkie twoje dane związane z logowaniem, pokonanymi trasami, \n
         lista znajomych i wszystko co nawiązuje do twojego konta. Tej operacji nie da się odwrócić!</string>
+    <string name="wybierz_styl">styl jazdy:</string>
 
     <string-array name="uklad">
         <item>Układ Elektryczny</item>
@@ -80,6 +81,14 @@
         <item>Układ Paliwowy</item>
         <item>Układ Zawieszenia</item>
         <item>Silnik</item>
+    </string-array>
+
+    <string-array name="styl_moto">
+        <item>początkujący</item>
+        <item>sportowy</item>
+        <item>turystyczny</item>
+        <item>rekreacyjny</item>
+        <item>offroad</item>
     </string-array>
 
 </resources>

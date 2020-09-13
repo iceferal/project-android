@@ -24,6 +24,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/ProfilActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/ProfilActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profil.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
@@ -557,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600002444525</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="usun profil">
+      <created>1600003228505</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1600003228505</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -584,7 +593,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wczytanie z db" />
     <MESSAGE value="weryfikacja maila, loginu i hasla" />
     <MESSAGE value="logo i back" />
     <MESSAGE value="buttons" />
@@ -609,7 +617,8 @@
     <MESSAGE value="faq" />
     <MESSAGE value="header text" />
     <MESSAGE value="header pic" />
-    <option name="LAST_COMMIT_MESSAGE" value="header pic" />
+    <MESSAGE value="usun profil" />
+    <option name="LAST_COMMIT_MESSAGE" value="usun profil" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Inspections" timestamp="1592828270808">
@@ -620,10 +629,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="477" y="252" key="#PSD/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600000051321" />
-    <state x="896" y="256" width="686" height="581" key="#com.intellij.ide.util.MemberChooser" timestamp="1598816140216">
+    <state x="896" y="256" width="686" height="581" key="#com.intellij.ide.util.MemberChooser" timestamp="1600006163458">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="896" y="256" width="686" height="581" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598816140216" />
+    <state x="896" y="256" width="686" height="581" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600006163458" />
     <state x="640" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1592829537468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -640,10 +649,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="671" y="310" key="AndroidCreateResourceDirectoryDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592992020062" />
-    <state x="818" y="333" key="AndroidCreateXmlResourceDialog" timestamp="1600002662076">
+    <state x="818" y="333" key="AndroidCreateXmlResourceDialog" timestamp="1600005772554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="818" y="333" key="AndroidCreateXmlResourceDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600002662076" />
+    <state x="818" y="333" key="AndroidCreateXmlResourceDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600005772554" />
     <state x="815" y="285" key="AndroidProcessChooserDialog" timestamp="1591831685976">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -652,10 +661,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="225" key="AndroidThemeDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591888466216" />
-    <state x="479" y="114" key="CommitChangelistDialog2" timestamp="1600002442145">
+    <state x="479" y="114" key="CommitChangelistDialog2" timestamp="1600003226240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="479" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600002442145" />
+    <state x="479" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600003226240" />
     <state x="479" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1599253740940" />
     <state x="689" y="264" key="FileChooserDialogImpl" timestamp="1593623380405">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -686,10 +695,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593774114460" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1599685201025">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1600003234363">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1599685201025" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600003234363" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599253748176" />
     <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596061829445">
       <screen x="0" y="0" width="1920" height="1040" />

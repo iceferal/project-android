@@ -151,7 +151,7 @@
             android:layout_marginRight="35dp"
             android:textAlignment="center"
             android:hint="@string/hasło"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="15sp"/>
 
         <Button
@@ -239,16 +239,24 @@
             android:layout_height="wrap_content"
             android:text="styl jazdy:" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/styl_text"
+        <RelativeLayout
+            android:id="@+id/spinner_styl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:textAlignment="center"
-            android:hint="@string/styl_jazdy"
-            android:inputType="text"
-            android:textSize="15sp"/>
+            android:layout_marginTop="5dp" >
+            <Spinner
+                android:id="@+id/spinner_moto"
+                android:verticalScrollbarPosition="defaultPosition"
+                android:prompt="@string/wybierz_styl"
+                android:entries="@array/styl_moto"
+                android:spinnerMode="dialog"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:visibility="visible"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/motoBtn"

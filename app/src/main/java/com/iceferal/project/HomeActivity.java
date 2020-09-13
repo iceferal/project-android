@@ -57,8 +57,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         TextView userName = (TextView) nav.findViewById(R.id.userName);
         TextView userMail = (TextView) nav.findViewById(R.id.userMail);
         ImageView imageView = (ImageView) nav.findViewById(R.id.imageView);
-        userName.setText("lol kurwa lol");
-        userMail.setText("chuja.mam@i.ci.dam");
+        userName.setText("iceferal");
+        userMail.setText("moj@mail.com");
         Picasso.get().load(photoUrl).resize(250, 250).into(imageView);
 
         navigationView.setNavigationItemSelectedListener(this);
