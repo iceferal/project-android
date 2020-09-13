@@ -67,6 +67,10 @@
         czasu jaki planuje poświęcić na jazdę, razem z prośbą o Twoją akceptację. Jeśli zaakceptujesz tę prosbę, aplikacja wyznaczy sugerowane miejsce na spotkanie. Po powrocie do domu masz możliwość zaproszenia danej osoby
         do grona znajomych, aby móc ponowić wspólną przejażdżkę.</string>
     <string name="q.no6">Niestety nie. Na dzień dzisiejszy aplikacja wymaga połączenia z internetem. Ale w dalszych planach rozwoju mamy zamiar rozbudować aplikację o właśnie taką możliwość.</string>
+    <string name="usuń">usuń</string>
+    <string name="remove">Jeśli nie chcesz już korzystać z aplikacji, albo uważasz, że nie będzie Ci już potrzebna, możesz usunąć swój profil z bazy danych.
+        Pamiętaj jednak, że robiąć to, usunięte zostaną wszelkie twoje dane związane z logowaniem, pokonanymi trasami, \n
+        lista znajomych i wszystko co nawiązuje do twojego konta. Tej operacji nie da się odwrócić!</string>
 
     <string-array name="uklad">
         <item>Układ Elektryczny</item>
