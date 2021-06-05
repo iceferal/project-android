@@ -1,11 +1,13 @@
 package com.iceferal.project;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -71,14 +73,27 @@ public class ProfilActivity extends AppCompatActivity implements AdapterView.OnI
         }
 
     public void changePic(View view) {
+        Toast.makeText(ProfilActivity.this, "Ta funkcja z czasem.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(ProfilActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void daneBtn(View view) {
+        Intent intent = new Intent(ProfilActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void motoBtn(View view) {
+        Intent intent = new Intent(ProfilActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void usunBtn(View view) {
+        Intent intent = new Intent(ProfilActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
