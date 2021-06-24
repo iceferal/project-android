@@ -268,12 +268,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             String surname = acct.getFamilyName();
             String email = acct.getEmail();
             String personId = acct.getId();
+            String personPhoto = acct.getPhotoUrl().toString();
 
-            Log.d("kurwa google", name);
+            Log.d("kurwa google", acct.getGivenName());
             Log.d("kurwa google", email);
-            Log.d("kurwa google", personId);
-
-            addUser(name, surname, person, email, personId);
+            Log.d("kurwa google", personId.toString());
+            loggedUser(name, surname, email, personPhoto);
+            addUser(acct.getGivenName(), surname, person, email, personId);
         }
     }
 
@@ -320,7 +321,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             Log.d("kurwa facebook", first_name);
                             Log.d("kurwa facebook", email);
                             Log.d("kurwa facebook", id);
-
+                            loggedUser(first_name, last_name, email, image_url);
                             addUser(first_name, last_name, first_name + " " + last_name, email, id);
 
                         } catch (JSONException e) {
@@ -352,6 +353,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onFailure(Call<User> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();   }
         });
+    }
+
+    public void loggedUser(String name, String surname, String email, String image) {
+        User.setName(name);
+        User.setSurname(surname);
+        User.setEmail(email);
+        User.setImage(image);
     }
 
     private void showGPSDisabledAlertToUser(){

@@ -16,17 +16,19 @@ import retrofit2.Response;
 public class User {
 
     @SerializedName("id")
-    private Long id;
+    private static Long id;
     @SerializedName("name")
-    private String name;
+    private static String name;
     @SerializedName("surname")
-    private String surname;
+    private static String surname;
     @SerializedName("login")
     private String login;
     @SerializedName("email")
-    private String email;
+    private static String email;
     @SerializedName("password")
     private String password;
+    @SerializedName("image")
+    private static String image;
 
     public User(Long id, String name, String surname, String login, String email, String password) {
         this.id = this.id;
@@ -41,22 +43,22 @@ public class User {
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public static void setId(Long id) {
+        User.id = id;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
+    public static void setName(String name) {
+        User.name = name;
     }
 
     public String getSurname() {
         return surname;
     }
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public static void setSurname(String surname) {
+        User.surname = surname;
     }
 
     public String getLogin() { return login; }
@@ -64,11 +66,11 @@ public class User {
         this.login = login;
     }
 
-    public String getEmail() {
+    public static String getEmail() {
         return email;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public static void setEmail(String email) {
+        User.email = email;
     }
 
     public String getPassword() {
@@ -76,5 +78,12 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static String getImage() {
+        return image;
+    }
+    public static void setImage(String image) {
+        User.image = image;
     }
 }

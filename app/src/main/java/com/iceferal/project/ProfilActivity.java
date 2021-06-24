@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.iceferal.project.models.User;
+
 public class ProfilActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner spinner_moto;
@@ -34,7 +36,7 @@ public class ProfilActivity extends AppCompatActivity implements AdapterView.OnI
         TextView email_text = (TextView) findViewById(R.id.email_text);
         TextView hasło_text = (TextView) findViewById(R.id.hasło_text);
 
-        name_text.setText("Łukasz");
+        name_text.setText(User.getName());
         surname_text.setText("Smyk");
         login_text.setText("iceferal");
         email_text.setText("moj@mail.com");
