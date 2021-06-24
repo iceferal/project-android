@@ -168,6 +168,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
 //    public void printHashKey() {
 //        try {
 ////            PackageInfo info = getPackageManager().getPackageInfo("com.iceferal.project", PackageManager.GET_SIGNATURES);
@@ -227,6 +235,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     Toast.makeText(LoginActivity.this, "Serwer chwilowo nie odpowiada, spróbuj pozniej.", Toast.LENGTH_SHORT).show();
+
 //   furtka dla offline rest api:
 //                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
 //                startActivity(intent);
@@ -273,8 +282,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.d("kurwa google", acct.getGivenName());
             Log.d("kurwa google", email);
             Log.d("kurwa google", personId.toString());
-            loggedUser(name, surname, email, personPhoto);
-            addUser(acct.getGivenName(), surname, person, email, personId);
+            loggedUser(name, surname, person, email, personPhoto);
+            addUser(acct.getGivenName(), acct.getFamilyName(), person, email, personId);
         }
     }
 
@@ -314,14 +323,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         try {
                             String first_name = object.getString("first_name");
                             String last_name = object.getString("last_name");
+                            String login = first_name + " " + last_name;
                             String email = object.getString("email");
                             String id = object.getString("id");
                             String image_url = "https://graph.facebook.com/" + id + "/picture?type=normal";
 
                             Log.d("kurwa facebook", first_name);
+                            Log.d("kurwa facebook", object.getString("last_name"));
                             Log.d("kurwa facebook", email);
                             Log.d("kurwa facebook", id);
-                            loggedUser(first_name, last_name, email, image_url);
+                            loggedUser(first_name, last_name, login, email, image_url);
                             addUser(first_name, last_name, first_name + " " + last_name, email, id);
 
                         } catch (JSONException e) {
@@ -355,9 +366,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
     }
 
-    public void loggedUser(String name, String surname, String email, String image) {
+    public void loggedUser(String name, String surname, String login, String email, String image) {
         User.setName(name);
         User.setSurname(surname);
+        User.setLogin(login);
         User.setEmail(email);
         User.setImage(image);
     }

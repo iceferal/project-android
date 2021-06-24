@@ -8,7 +8,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="kurwa" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="AutoImportSettings">
@@ -16,15 +17,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c4baf4-e351-4981-8215-e1de47557068" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/HomeActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/ProfilActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/ProfilActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/StartActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/iceferal/project/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profil.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -591,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624034233386</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="profil actualization">
+      <created>1624542866405</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1624542866405</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -617,7 +622,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="menu" />
     <MESSAGE value="fb login" />
     <MESSAGE value="fb i google login" />
     <MESSAGE value="przyciski na rowno" />
@@ -642,7 +646,8 @@
     <MESSAGE value="spinner style" />
     <MESSAGE value="comming back" />
     <MESSAGE value="gps repair" />
-    <option name="LAST_COMMIT_MESSAGE" value="gps repair" />
+    <MESSAGE value="profil actualization" />
+    <option name="LAST_COMMIT_MESSAGE" value="profil actualization" />
   </component>
   <component name="WindowStateProjectService">
     <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1622923212473">
@@ -653,26 +658,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1622925723952" />
-    <state x="335" y="88" key="CommitChangelistDialog2" timestamp="1624034232175">
+    <state x="335" y="88" key="CommitChangelistDialog2" timestamp="1624542865546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="335" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624034232175" />
-    <state width="1877" height="244" key="GridCell.Tab.0.bottom" timestamp="1624542646773">
+    <state x="335" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624542865546" />
+    <state width="1877" height="244" key="GridCell.Tab.0.bottom" timestamp="1624562286604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624542646773" />
-    <state width="1877" height="244" key="GridCell.Tab.0.center" timestamp="1624542646773">
+    <state width="1877" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624562286604" />
+    <state width="1877" height="244" key="GridCell.Tab.0.center" timestamp="1624562286604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="244" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624542646773" />
-    <state width="1877" height="244" key="GridCell.Tab.0.left" timestamp="1624542646773">
+    <state width="1877" height="244" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624562286604" />
+    <state width="1877" height="244" key="GridCell.Tab.0.left" timestamp="1624562286604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="244" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624542646773" />
-    <state width="1877" height="244" key="GridCell.Tab.0.right" timestamp="1624542646773">
+    <state width="1877" height="244" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624562286604" />
+    <state width="1877" height="244" key="GridCell.Tab.0.right" timestamp="1624562286604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="244" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624542646773" />
+    <state width="1877" height="244" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1624562286604" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1624034236983">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

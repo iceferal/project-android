@@ -22,7 +22,7 @@ public class User {
     @SerializedName("surname")
     private static String surname;
     @SerializedName("login")
-    private String login;
+    private static String login;
     @SerializedName("email")
     private static String email;
     @SerializedName("password")
@@ -54,17 +54,15 @@ public class User {
         User.name = name;
     }
 
-    public String getSurname() {
+    public static String getSurname() {
         return surname;
     }
     public static void setSurname(String surname) {
         User.surname = surname;
     }
 
-    public String getLogin() { return login; }
-    public void setLogin(String login) {
-        this.login = login;
-    }
+    public static String getLogin() { return login; }
+    public static void setLogin(String login) { User.login = login; }
 
     public static String getEmail() {
         return email;

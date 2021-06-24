@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.iceferal.project.models.User;
+import com.squareup.picasso.Picasso;
 
 public class ProfilActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -28,8 +30,9 @@ public class ProfilActivity extends AppCompatActivity implements AdapterView.OnI
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Profil");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageView imageLogo = (ImageView) findViewById(R.id.imageLogo);
 
-
+        Picasso.get().load(User.getImage()).resize(250, 250).into(imageLogo);
         TextView name_text = (TextView) findViewById(R.id.name_text);
         TextView surname_text = (TextView) findViewById(R.id.surname_text);
         TextView login_text = (TextView) findViewById(R.id.login_text);
@@ -37,9 +40,9 @@ public class ProfilActivity extends AppCompatActivity implements AdapterView.OnI
         TextView hasło_text = (TextView) findViewById(R.id.hasło_text);
 
         name_text.setText(User.getName());
-        surname_text.setText("Smyk");
-        login_text.setText("iceferal");
-        email_text.setText("moj@mail.com");
+        surname_text.setText(User.getSurname());
+        login_text.setText(User.getLogin());
+        email_text.setText(User.getEmail());
         hasło_text.setText("haslo");
 
         TextView moto_text = (TextView) findViewById(R.id.moto_text);
