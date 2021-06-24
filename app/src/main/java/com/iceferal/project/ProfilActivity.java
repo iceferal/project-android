@@ -1,6 +1,8 @@
 package com.iceferal.project;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +45,7 @@ public class ProfilActivity extends AppCompatActivity implements AdapterView.OnI
         surname_text.setText(User.getSurname());
         login_text.setText(User.getLogin());
         email_text.setText(User.getEmail());
-        hasło_text.setText("haslo");
+        hasło_text.setText("jebac pis");
 
         TextView moto_text = (TextView) findViewById(R.id.moto_text);
         TextView model_text = (TextView) findViewById(R.id.model_text);
@@ -97,8 +99,31 @@ public class ProfilActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void usunBtn(View view) {
-        Intent intent = new Intent(ProfilActivity.this, HomeActivity.class);
+    /*    Intent intent = new Intent(ProfilActivity.this, HomeActivity.class);
         startActivity(intent);
-        finish();
+        finish(); */
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Potwierdź usunięcie profilu?")
+                .setCancelable(false)
+                .setPositiveButton("Potwierdzam",
+                        new DialogInterface.OnClickListener(){
+                            public void onClick(DialogInterface dialog, int id){
+
+                                //usuwanie profilu z bazy
+
+                                Intent intent = new Intent(ProfilActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("Anuluj",
+                new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
     }
+
 }

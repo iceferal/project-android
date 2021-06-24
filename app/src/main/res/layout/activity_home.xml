@@ -24,7 +24,6 @@
             android:theme="?attr/actionBarTheme"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4dp"/>
-        
 
 
         <FrameLayout
@@ -35,11 +34,24 @@
 
             <fragment
                 android:id="@+id/mapView"
+                android:tag="mapView"
                 android:layout_margin="15dp"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:background="@drawable/shadow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"  />
+
+            <ImageButton
+                android:id="@+id/refreshBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:onClick="refresh"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="25dp"
+                android:layout_marginRight="25dp"
+                app:srcCompat="@android:drawable/ic_popup_sync" />
+
+
         </FrameLayout>
     </LinearLayout>
 
@@ -50,7 +62,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/header"
-        app:menu="@menu/homemenu" >
-    </com.google.android.material.navigation.NavigationView>
+        app:menu="@menu/homemenu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

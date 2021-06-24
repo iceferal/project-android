@@ -7,15 +7,20 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +41,6 @@ import com.squareup.picasso.Picasso;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    String photoUrl = "https://scontent-frx5-1.xx.fbcdn.net/v/t31.0-8/11879083_875916405829012_586549721183308009_o.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=iUx7UDu92vgAX-6ltAe&_nc_ht=scontent-frx5-1.xx&oh=e7beda289ca693dc95a4f2aab724eeb7&oe=5F822123";
     private DrawerLayout drawer;
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
@@ -49,7 +53,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //^^ up menu ^^
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
-
+        Log.d("kurwa localoca", String.valueOf(client));
         drawer = findViewById(R.id.home_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -65,6 +69,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.menu_opener, R.string.menu_closer);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
 
 // maps location
 
@@ -89,7 +94,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Task<Location> task = client.getLastLocation();
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
-            public void onSuccess(final Location location) {
+            public void onSuccess(Location location) {
                 if(location != null) {
                     supportMapFragment.getMapAsync(new OnMapReadyCallback() {
                         @Override
@@ -98,6 +103,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             MarkerOptions options = new MarkerOptions().position(latLng).title("tutaj kufa");
                             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                             googleMap.addMarker(options);
+                            Log.d("kurwa loca", String.valueOf(client));
                         }
                     });
                 }
@@ -167,4 +173,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();    }
+
+    public void refresh(View view) {
+     //   finish();
+     //   startActivity(getIntent());
+
+        finish();
+        startActivity(new Intent(this, HomeActivity.class));
+        overridePendingTransition(0, 0);
+    }
+
 }
